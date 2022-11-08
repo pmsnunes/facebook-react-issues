@@ -38,7 +38,7 @@ const TableRow = ({ createdAt, title, state, author, url }: TableRowProps) => {
         </div>
       </td>
       <td className="py-3 px-6 text-center">
-        <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">
+        <span className="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">
           {state}
         </span>
       </td>

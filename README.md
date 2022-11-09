@@ -25,3 +25,13 @@ pnpm create next-app --example with-tailwindcss with-tailwindcss-app
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+
+
+## Enviromnet Setup
+
+First you will need to [generate a github personal authentication token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) in order make the API CALLS.
+You will need to generate a classic token because Fine Grained tokens are not yet supported by graphql.
+
+Create a .env.local file with:
+
+NEXT_PUBLIC_GITHUB_TOKEN=your_github_access_token

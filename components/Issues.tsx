@@ -1,44 +1,10 @@
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useState } from "react";
+import { IssuesQuery } from "../queries/issues";
 import TableHead from "./TableHead";
 import TablePagination from "./TablePagination";
 import TableRow from "./TableRow";
 
-const QUERY = gql`
-  query Issues($before: String, $after: String, $first: Int, $last: Int) {
-    search(
-      first: $first
-      last: $last
-      before: $before
-      after: $after
-      type: ISSUE
-      query: "repo:facebook/react state:open is:issue"
-    ) {
-      issueCount
-      pageInfo {
-        hasPreviousPage
-        hasNextPage
-        endCursor
-        startCursor
-      }
-      edges {
-        node {
-          ... on Issue {
-            createdAt
-            title
-            url
-            state
-            author {
-              avatarUrl
-              url
-              login
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 interface CursorPagination {
   before: String | null,
@@ -56,7 +22,7 @@ const Issues = () => {
   });
 
 
-  const { data, loading, error } = useQuery(QUERY, {
+  const { data, loading, error } = useQuery(IssuesQuery, {
     variables: { before: cursor.before, after: cursor.after, first: cursor.first, last: cursor.last },
   });
 
